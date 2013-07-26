@@ -3,7 +3,7 @@ public class Main {
 
     public static void main(String... args) {
 
-        System.out.print("Testing point\n");
+        System.out.print("Testing Point\n");
 
         Point pn = new Point();
         pn.set(1.2f, 3.4f);
@@ -21,6 +21,7 @@ public class Main {
         System.out.println(pn.getX() + " " + pn.getY());
         System.out.println(pn);
 
+        System.out.print("Testing Square\n");
         Square sq = new Square();
         sq.set(pn, 110.0f);
         System.out.println(sq);
@@ -37,6 +38,24 @@ public class Main {
             sq.validate();
         }
         System.out.println(sq);
+
+        System.out.print("Testing SquareListItem\n");
+        SquareListItem rootItem = new SquareListItem();
+        SquareListItem item = rootItem;
+
+        for(float x = -45.0f; x < 105.0f; x += 15.0f) {
+
+            for(float y = -45.0f; y < 105.0f; y += 15.0f) {
+
+                for (float length = -45.0f; length < 105.0f; length += 15.0f) {
+
+                    item = item.setSquare(new Square(x, y, length));
+                }
+            }
+        }
+
+        System.out.println("One item only - " + item);
+        System.out.print(rootItem);
     }
 
 }
