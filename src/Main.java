@@ -21,5 +21,22 @@ public class Main {
         System.out.println(pn.getX() + " " + pn.getY());
         System.out.println(pn);
 
+        Square sq = new Square();
+        sq.set(pn, 110.0f);
+        System.out.println(sq);
+        System.out.println(sq.isValid() ? "Valid" : "Not valid");
+        sq.validate();
+
+        Square sq1 = new Square(sq);
+        System.out.println(sq1);
+        System.out.println(sq1.isValid() ? "Valid" : "Not valid");
+
+        sq = new Square(5.6f, 7.8f, 9.1f);
+        if(!sq.isValid()) {
+
+            sq.validate();
+        }
+        System.out.println(sq);
     }
+
 }
