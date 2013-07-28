@@ -1,9 +1,11 @@
-
 public class Square {
 
+    // this is instance level varibles, they must go after class level varibles
+    // 'm' at beginingof filed is not Java style (Android style is not Java style ;) )
     private Point mPosition;
     private float mLength;
-
+    
+    // better first write class level varibles and then instance leve
     private static float MIN_X = 0.0f;
     private static float MAX_X = 100.0f;
 
@@ -62,7 +64,6 @@ public class Square {
     }
 
     public boolean isValid() {
-
         //TODO: is it really need?
         Point position = getOppositePosition();
         return isPositionValid(mPosition) && isLengthValid() &&
