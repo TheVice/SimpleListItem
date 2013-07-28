@@ -1,42 +1,42 @@
 
 public class Point {
 
-    private float mX, mY;
+    private float x, y;
 
     public Point() {
 
     }
 
-    public Point(Point aPoint) {
+    public Point(Point point) {
 
-        set(aPoint.getX(), aPoint.getY());
+        this(point.getX(), point.getY());
     }
 
-    public Point(float aX, float aY) {
+    public Point(float x, float y) {
 
-        set(aX, aY);
+        set(x, y);
     }
 
-    public void set(float aX, float aY) {
+    public void set(float x, float y) {
 
-        mX = aX;
-        mY = aY;
+        this.x = x;
+        this.y = y;
     }
 
     public float getX() {
 
-        return mX;
+        return x;
     }
 
     public float getY() {
 
-        return mY;
+        return y;
     }
 
     @Override
     public String toString() {
 
-        return  "{x = " + mX + "; y = " + mY + "}";
+        return  "{x = " + x + "; y = " + y + "}";
     }
 
 }

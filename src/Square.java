@@ -1,48 +1,42 @@
 
 public class Square {
 
-    private Point mPosition;
-    private float mLength;
-
-    private static float MIN_X = 0.0f;
-    private static float MAX_X = 100.0f;
-
-    private static float MIN_Y = 0.0f;
-    private static float MAX_Y = 100.0f;
+    private Point position;
+    private float length;
 
     public Square() {
 
     }
 
-    public Square(Square aSquare) {
+    public Square(Square square) {
 
-        set(new Point(aSquare.getPosition()), aSquare.getLength());
+        this(square.getPosition().getX(), square.getPosition().getY(), square.getLength());
     }
 
-    public Square(float aX, float aY, float aLength) {
+    public Square(float x, float y, float length) {
 
-        set(new Point(aX, aY), aLength);
+        set(new Point(x, y), length);
     }
 
-    public void set(Point aPoint, float aLength) {
+    public void set(Point point, float length) {
 
-        mPosition = new Point(aPoint);
-        mLength = aLength;
+        this.position = point;
+        this.length = length;
     }
 
     public Point getPosition() {
 
-        return mPosition;
+        return position;
     }
 
     float getLength() {
 
-        return mLength;
+        return length;
     }
 
     public Point getOppositePosition() {
 
-        Point position = new Point(mPosition.getX() + mLength, mPosition.getY() + mLength);
+        Point position = new Point(this.position.getX() + length, this.position.getY() + length);
         return position;
     }
 
@@ -62,31 +56,30 @@ public class Square {
     }
 
     public boolean isValid() {
-
-        //TODO: is it really need?
+        //TODO: is this method really need?
         Point position = getOppositePosition();
-        return isPositionValid(mPosition) && isLengthValid() &&
+        return isPositionValid(this.position) && isLengthValid() &&
                 isPositionValid(position);
     }
 
     public void validate() {
 
-        if(isPositionValid(mPosition) && isLengthValid()) {
+        if(isPositionValid(position) && isLengthValid()) {
 
-            float deltaX = mPosition.getX() + mLength - MAX_X;
-            float deltaY = mPosition.getY() + mLength - MAX_Y;
+            float deltaX = position.getX() + length - MAX_X;
+            float deltaY = position.getY() + length - MAX_Y;
 
             if(deltaX > 0) {
 
-                mPosition.set(mPosition.getX() - deltaX, mPosition.getY());
+                position.set(position.getX() - deltaX, position.getY());
             }
             if(deltaY > 0) {
 
-                mPosition.set(mPosition.getX(), mPosition.getY()- deltaY);
+                position.set(position.getX(), position.getY() - deltaY);
             }
             return;
         }
-        else if(isPositionValid(mPosition)) {
+        else if(isPositionValid(position)) {
 
             validateLength();
         }
@@ -104,13 +97,13 @@ public class Square {
 
     private void validateLength() {
 
-        mLength = min(MAX_X, MAX_Y) - max(mPosition.getX(), mPosition.getY());
+        length = min(MAX_X, MAX_Y) - max(position.getX(), position.getY());
     }
 
     private void validatePosition() {
 
-        mPosition.set(max(MAX_X - mLength, MIN_X),
-                      max(MAX_Y - mLength, MAX_Y));
+        position.set(max(MAX_X - length, MIN_X),
+                max(MAX_Y - length, MAX_Y));
     }
 
     private float min(float aA, float aB) {
@@ -127,8 +120,14 @@ public class Square {
     @Override
     public String toString() {
 
-        return "{Position = " + mPosition + "; Length = " + mLength +
+        return "{Position = " + position + "; Length = " + length +
                 "; Opposite Position = " + getOppositePosition()  + "}";
     }
+
+    private static float MIN_X = 0.0f;
+    private static float MAX_X = 100.0f;
+
+    private static float MIN_Y = 0.0f;
+    private static float MAX_Y = 100.0f;
 
 }

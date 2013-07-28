@@ -1,22 +1,22 @@
 
 public class SquareListItem {
 
-    private static int mSID;
-    private int mID;
-    private Square mSquare;
-    private SquareListItem mNext;
+    private static int sid;
+    private int id;
+    private Square square;
+    private SquareListItem next;
 
     public SquareListItem() {
 
-        mID = mSID++;
+        id = sid++;
     }
 
-    public SquareListItem setSquare(Square aSquare) {
+    public SquareListItem setSquare(Square square) {
 
-        aSquare.validate();
-        mSquare = new Square(aSquare);
-        mNext = new SquareListItem();
-        return mNext;
+        square.validate();
+        this.square = square;
+        next = new SquareListItem();
+        return next;
     }
 
     @Override
@@ -24,10 +24,10 @@ public class SquareListItem {
 
         //TODO: this recursion may be overload, so count of List is limited now
         String str = super.toString() +
-                "= {id = " + mID + "; Square = " + mSquare + "}\n";
-        if(mSquare != null && mNext != null) {
+                "= {id = " + id + "; Square = " + square + "}\n";
+        if(square != null && next != null) {
 
-            str += mNext;
+            str += next;
         }
 
         return str;
