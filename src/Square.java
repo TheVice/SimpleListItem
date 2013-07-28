@@ -1,6 +1,12 @@
 
 public class Square {
 
+    private static float MIN_X = 0.0f;
+    private static float MAX_X = 100.0f;
+
+    private static float MIN_Y = 0.0f;
+    private static float MAX_Y = 100.0f;
+
     private Point position;
     private float length;
 
@@ -123,11 +129,5 @@ public class Square {
         return "{Position = " + position + "; Length = " + length +
                 "; Opposite Position = " + getOppositePosition()  + "}";
     }
-
-    private static float MIN_X = 0.0f;
-    private static float MAX_X = 100.0f;
-
-    private static float MIN_Y = 0.0f;
-    private static float MAX_Y = 100.0f;
 
 }
