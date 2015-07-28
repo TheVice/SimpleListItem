@@ -7,7 +7,7 @@ public class SquareListItem {
     private SquareListItem next;
 
     public SquareListItem() {
-
+        // what this counter is for? Just instance counting?
         id = sid++;
     }
 
