@@ -1,4 +1,11 @@
+# Java class files
 *.class
+
 *.iml
 .idea
-out
+
+# Build dir
+build/
+
+# Gradle files
+.gradle/

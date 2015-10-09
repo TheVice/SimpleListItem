@@ -1,6 +1,6 @@
-if [ ! -d ./out ]; then mkdir ./out; fi
-javac -sourcepath ./src ./src/Main.java -d ./out
+if [ ! -d ./build ]; then mkdir ./build; fi
+javac -sourcepath ./src ./src/Main.java -d ./build
 CURRENT_DIR=$PWD
-cd ./out
+cd ./build
 java Main
 cd $CURRENT_DIR
