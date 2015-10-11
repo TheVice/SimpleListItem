@@ -22,8 +22,7 @@ java -jar ./build/SimpleListItem.jar
 Console automatic making by [Gradle](http://gradle.org/)
 =============
 * Open console (terminal on Linux or cmd.exe on Windows) and move into project directory
-* Make sure that path to bin directory of ```gradle``` must be in environment variable PATH
-* Type and execute: ```gradle build```
+* Type and execute: ```gradlew build``` or ```gradlew build --daemon```. Running with daemon switch preferred for develop environment, when need to often modify code and see what change at runtime
 * For run app type and execute: ```java -cp build/classes/main Main```
 * Alternative you can run jar: ```java -jar build/libs/SimpleListItem-0.1.jar```
 

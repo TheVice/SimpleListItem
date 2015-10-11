@@ -16,3 +16,7 @@ jar {
     attributes 'Main-Class': 'Main' // adds Main-Class header to JAR file's manifest
   }
 }
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.5'
+}
