@@ -8,14 +8,16 @@ Console manual making and running
 * Type and execute next commands:
 ```
 mkdir build
-javac -sourcepath ./src ./src/Main.java -d build
-cd build/
-java Main
+javac -sourcepath ./src/main/java ./src/main/java/Main.java -d build
+java -cp ./build Main
 ```
-* It is also possible to do the same via scripts ```make_and_run.cmd``` (on Windows) and ```make_and_run.sh``` (on Linux)
-* For detail view of output - redirect output from console to file by simply add ```> 1.txt``` after script command:
-   * ```make_and_run.cmd > 1.txt``` on Windows or ```bash make_and_run.sh > 1.txt``` on Linux
-
+You can also making jar and run it
+```
+mkdir build
+javac -sourcepath ./src/main/java ./src/main/java/Main.java -d build
+jar cfev ./build/SimpleListItem.jar Main -C ./build .
+java -jar ./build/SimpleListItem.jar
+```
 
 Console automatic making by [Gradle](http://gradle.org/)
 =============
@@ -23,6 +25,7 @@ Console automatic making by [Gradle](http://gradle.org/)
 * Make sure that path to bin directory of ```gradle``` must be in environment variable PATH
 * Type and execute: ```gradle build```
 * For run app type and execute: ```java -cp build/classes/main Main```
+* Alternative you can run jar: ```java -jar build/libs/SimpleListItem-0.1.jar```
 
 Known issue
 =============

@@ -1,11 +1,10 @@
-# Java class files
-*.class
 
+# IntelliJ IDEA 
 *.iml
 .idea
 
-# Build dir
-build/
-
-# Gradle files
+# Gradle
 .gradle/
+
+# Output directory
+build/

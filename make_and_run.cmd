@@ -1,7 +1,4 @@
 @echo off
 if not exist build mkdir build
-javac -sourcepath ./src ./src/Main.java -d build
-set CURRENT_DIR=%CD%
-cd build/
-java Main
-cd %CURRENT_DIR%
+javac -sourcepath ./src/main/java ./src/main/java/Main.java -d build
+java -cp ./build Main

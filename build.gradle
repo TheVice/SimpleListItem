@@ -7,3 +7,12 @@
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
+
+version = 0.1 // identifies project's version through a number scheme
+//sourceCompability = 1.6 // sets Java version compilation compatibility to 1.6
+
+jar {
+  manifest {
+    attributes 'Main-Class': 'Main' // adds Main-Class header to JAR file's manifest
+  }
+}
