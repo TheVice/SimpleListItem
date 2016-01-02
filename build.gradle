@@ -8,7 +8,6 @@
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 
-version = 0.1 // identifies project's version through a number scheme
 //sourceCompability = 1.6 // sets Java version compilation compatibility to 1.6
 
 jar {
@@ -25,4 +24,41 @@ task printVersion {
 	doLast {
 		println "Version: $version"
 	}
+}
+
+ext.versionFile = file('version.properties') // identifies project's version
+
+task loadVersion {
+	project.version = readVersion()
+}
+
+class ProjectVersion {
+	Integer major
+	Integer minor
+
+	ProjectVersion(Integer major, Integer minor) {
+		this.major = major
+		this.minor = minor
+	}
+
+	@Override
+	String toString() {
+		"$major.$minor"
+	}
+}
+
+ProjectVersion readVersion() {
+	logger.quiet 'Reading the version file.'
+
+	if(!versionFile.exists()) {
+		throw new GradleException("Required version file does not exists: $versionFile.canonicalPath")
+	}
+
+	Properties versionProps = new Properties()
+
+	versionFile.withInputStream {
+		stream->versionProps.load(stream)
+	}
+
+	new ProjectVersion(versionProps.major.toInteger(), versionProps.minor.toInteger())
 }
