@@ -62,3 +62,15 @@ ProjectVersion readVersion() {
 
 	new ProjectVersion(versionProps.major.toInteger(), versionProps.minor.toInteger())
 }
+
+task createDistribution(type: Zip, dependsOn: build) {
+	from jar.outputs.files
+
+	from(sourceSets*.allSource) {
+		into 'src'
+	}
+
+	from(rootDir) {
+		include versionFile.name
+	}
+}
