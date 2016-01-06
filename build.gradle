@@ -74,3 +74,27 @@ task createDistribution(type: Zip, dependsOn: build) {
 		include versionFile.name
 	}
 }
+
+tasks.addRule("Pattern: increment<Classifier>Version - Increments the project version classifier.") {
+	String taskName -> if(taskName.startsWith('increment') && taskName.endsWith('Version')) {
+		task(taskName) << {
+			String classifier = (taskName - 'increment' - 'Version').toLowerCase()
+			String currentVersion = version.toString()
+
+			switch(classifier) {
+				case 'major': ++version.major
+					break
+				case 'minor': ++version.minor
+					break
+				default: throw new GradleException("Invalid version type '$classifier'. Allowed types: ['Major', 'Minor']")
+			}
+
+			String newVersion = version.toString()
+			logger.info "Incrementing $classifier project version: $currentVersion -> $newVersion"
+
+			ant.propertyfile(file: versionFile) {
+				entry(key: classifier, type: 'int', operation: '+', value: 1)
+			}
+		}
+	}
+}
